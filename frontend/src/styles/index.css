@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-paper-bg text-ink font-sans;
+    font-size: 13px;
+  }
+}
+
+@layer components {
+  /* Tabular layout used in every stage */
+  table.data {
+    @apply w-full border-collapse;
+  }
+  table.data th,
+  table.data td {
+    @apply px-3 py-2 text-left border-b border-paper-deep align-top;
+  }
+  table.data th {
+    @apply text-[11px] font-semibold uppercase tracking-wider text-ink-muted bg-paper-deep sticky top-0 z-10;
+  }
+  table.data tbody tr {
+    @apply cursor-pointer;
+  }
+  table.data tbody tr:hover {
+    @apply bg-paper-deep/60;
+  }
+  table.data tbody tr.is-selected {
+    background: #f3e4e0;
+  }
+
+  .pill {
+    @apply inline-block px-2 py-[2px] rounded text-[11px] font-medium leading-tight;
+  }
+  .pill-muted {
+    @apply pill bg-paper-deep text-ink-muted;
+  }
+  .pill-ok {
+    @apply pill text-ok;
+    background: #e3ebd6;
+  }
+  .pill-warn {
+    @apply pill text-warn;
+    background: #f5e8c8;
+  }
+  .pill-accent {
+    @apply pill text-accent;
+    background: #f3e4e0;
+  }
+  .pill-ai {
+    @apply pill bg-ink text-paper;
+  }
+
+  .btn-primary {
+    @apply bg-ink text-paper transition-colors;
+  }
+  .btn-primary:hover {
+    background: theme('colors.accent');
+  }
+  .btn-ghost:hover {
+    background: #ebe5d6;
+  }
+
+  /* Independent scrollable region */
+  .scroll-y {
+    overflow-y: auto;
+  }
+  .scroll-y::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scroll-y::-webkit-scrollbar-thumb {
+    background: #c9bfa9;
+    border-radius: 4px;
+  }
+  .scroll-y::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .pulse-dot {
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
